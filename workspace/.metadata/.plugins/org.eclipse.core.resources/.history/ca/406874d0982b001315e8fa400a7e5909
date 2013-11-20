@@ -1,0 +1,13 @@
+
+public class Homework_1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayStack arr = new ArrayStack();
+		for (double i = 0; i < 10;)
+			arr.push(i);
+		System.out.println(arr.peek());
+		
+	}
+
+}

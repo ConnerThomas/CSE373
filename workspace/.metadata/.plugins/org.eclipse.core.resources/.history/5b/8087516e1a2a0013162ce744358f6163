@@ -1,0 +1,12 @@
+
+public class ListStackNode {
+
+	public double data;
+	public ListStackNode next;
+	
+	private ListStackNode (double data, ListStackNode next) {
+		this.data = data;
+		this.next = next;
+		
+	}
+}

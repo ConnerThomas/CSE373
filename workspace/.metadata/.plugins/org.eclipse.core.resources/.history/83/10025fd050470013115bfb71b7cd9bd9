@@ -1,0 +1,76 @@
+import java.io.*;
+import java.util.*;
+
+public class MazeBuilder {
+	
+	public static void main(String[] args) throws FileNotFoundException{
+			
+		int cols;
+		int rows;
+		String outputFilename;
+		
+		if (args.length != 3){
+			System.err.println(" Incorrect number of arguments");
+            System.err.println(" Usage: ");
+            System.err.println("\tjava MazeBilder <height> <width> <output file>");
+            System.exit(1);
+		}
+		
+		// Read in command line arguments for height and weight and output filename
+		rows = Integer.parseInt(args[0]);
+		cols = Integer.parseInt(args[1]);
+		outputFilename = args[2];
+		
+		//Error check output file
+		
+		// Make an arraylist for the edges based on height and width and fill it up
+		ArrayList<int[]> edges = new ArrayList<int[]>();
+		fillEdgeList(edges, rows, cols);		
+		
+		// Create disjoint set for the cells
+		DisjointSets cells = new MyDisjSets(rows * cols);
+		
+		
+		// ********** Build Maze **********
+		
+		
+		// Print out maze to text file
+		printMaze(outputFilename, rows, cols);
+		
+		// Some testing output shit
+		System.out.println(rows + " by " + cols);
+		System.out.println("Output file is: " + outputFilename);
+		
+	}
+	
+	private static void printMaze(String outputFilename, int rows, int cols) throws FileNotFoundException{
+		// ********** Print Maze to File **********
+		
+		// Creates a printstream to write to the specified output file
+		PrintStream output = new PrintStream(new File(outputFilename));
+		
+		// Start by printing the top of the maze to the file
+		output.print("+");
+		for (int i = 1; i < rows + 1; i++){
+			output.print("-+");
+		}
+		// Then start printing rows
+	}
+	
+	private static void fillEdgeList(ArrayList<int[]> edges, int rows, int cols){
+		// there should be (2*rows*cols + rows - cols) # of edges
+		for (int i = 0; i < rows - 1; i++){
+			for (int j = 0; j < cols - 1; j++){
+				int val = j + rows * i;
+				int[] temp1 = {val, val + 1};				
+				int[] temp2 = {val, val + cols};
+				edges.add(temp1);
+				edges.add(temp2);
+			}
+			int[] temp3 = {(cols - 1) + rows * i, ((cols - 1) + rows * i) + cols};
+			edges.add(temp3);
+		}
+	}
+	
+
+}

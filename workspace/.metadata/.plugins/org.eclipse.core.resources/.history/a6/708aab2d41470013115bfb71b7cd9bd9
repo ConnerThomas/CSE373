@@ -1,0 +1,65 @@
+import java.io.*;
+import java.util.*;
+
+public class MazeBuilder {
+	
+	public static void main(String[] args) throws FileNotFoundException{
+			
+		int cols;
+		int rows;
+		String outputFilename;
+		
+		if (args.length != 3){
+			System.err.println(" Incorrect number of arguments");
+            System.err.println(" Usage: ");
+            System.err.println("\tjava MazeBilder <height> <width> <output file>");
+            System.exit(1);
+		}
+		
+		// Read in command line arguments for height and weight and output filename
+		rows = Integer.parseInt(args[0]);
+		cols = Integer.parseInt(args[1]);
+		outputFilename = args[2];
+		
+		//Error check output file
+		
+		// Make an arraylist for the edges based on height and width and fill it up
+		ArrayList<int[]> edges = new ArrayList<int[]>();
+		
+		for (int u = 0; u < rows; u++){
+			for (int v = 0; v < cols; v++){
+				
+			}
+		}
+		
+		// Create disjoint set for the cells
+		DisjointSets cells = new MyDisjSets(rows * cols);
+		
+		// Creates a printstream to write to the specified output file
+		PrintStream output = new PrintStream(new File(outputFilename));
+		
+		// ********** Build Maze **********
+		
+		
+		// ********** Print Maze to File **********
+		// Start by printing the top of the maze to the file
+		output.print("+");
+		for (int i = 1; i < rows + 1; i++){
+			output.print("-+");
+		}
+		// Then start printing rows
+		
+		
+		
+		// Some testing output shit
+		System.out.println(rows + " by " + cols);
+		System.out.println("Output file is: " + outputFilename);
+		
+	}
+	
+	private void printMaze(int[][] wallHoriz, int[][] wallVert){
+		
+	}
+	
+
+}

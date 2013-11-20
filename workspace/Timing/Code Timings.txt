@@ -1,0 +1,37 @@
+4b.
+1.
+class Timing {
+    public static final int NUM_TIMINGS = 5;
+    public static void main(String[] args) {
+        for(int timing = 0; timing < NUM_TIMINGS; ++timing) {
+            long startTime = System.nanoTime();
+            // ... start code being timed ...
+            int n = 1000;
+            int sum = 0;
+            for (int i = 0; i < n; i++) { 
+            	sum++;
+            }
+			// ... end code being timed ...
+            long endTime = System.nanoTime();
+            long elapsedTime = endTime - startTime;
+            System.out.println(elapsedTime + " nanoseconds or " + elapsedTime/(1000000000.0) + " seconds elapsed");
+        }
+    }
+}
+n = 1000
+~6496 nanoseconds or 6.496E-6 seconds elapsed
+n= 10000
+~70148 nanoseconds or 8.8148E-5 seconds elapsed
+
+2.
+
+3.
+
+4.
+
+5.
+
+6.
+
+7.
+

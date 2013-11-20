@@ -1,0 +1,22 @@
+{
+  "C:\\Users\\Conner\\SkyDrive\\College Stuff - Skydrive\\CSE 373\\workspace\\Homework_1\\src": {
+    "location": "C:\\Users\\Conner\\SkyDrive\\College Stuff - Skydrive\\CSE 373\\workspace\\Homework_1\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\Conner\\SkyDrive\\College Stuff - Skydrive\\CSE 373\\workspace\\Homework_1\\src\u0027. Skipped."
+  },
+  "C:\\Program Files\\Java\\jre7\\lib\\rt.jar": {
+    "coordinate": "jre:jre:zip:call:1.0.0",
+    "location": "C:\\Program Files\\Java\\jre7\\lib\\rt.jar",
+    "status": "RESOLVED"
+  },
+  "C:\\Users\\Conner\\SkyDrive\\College Stuff - Skydrive\\CSE 373\\workspace\\HeapsNStuff\\src": {
+    "location": "C:\\Users\\Conner\\SkyDrive\\College Stuff - Skydrive\\CSE 373\\workspace\\HeapsNStuff\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\Conner\\SkyDrive\\College Stuff - Skydrive\\CSE 373\\workspace\\HeapsNStuff\\src\u0027. Skipped."
+  },
+  "C:\\Users\\Conner\\SkyDrive\\College Stuff - Skydrive\\CSE 373\\workspace\\MazeBuilder\\src": {
+    "location": "C:\\Users\\Conner\\SkyDrive\\College Stuff - Skydrive\\CSE 373\\workspace\\MazeBuilder\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\Conner\\SkyDrive\\College Stuff - Skydrive\\CSE 373\\workspace\\MazeBuilder\\src\u0027. Skipped."
+  }
+}

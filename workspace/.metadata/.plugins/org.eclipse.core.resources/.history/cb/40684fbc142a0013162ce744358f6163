@@ -1,0 +1,19 @@
+
+public class ListStack {
+
+		public boolean isEmpty() {
+			return false;
+		} 
+			
+		public void push (double d) {
+			
+		}
+		
+		public double pop() {
+			return 0;
+		}
+		
+		public double peek() {
+			return null;
+		}
+}

@@ -1,0 +1,148 @@
+/*
+ * Conner Thomas
+ * CSE 373
+ * Homework 4
+ * 
+ * Implementation of a disjoint set for ints using an array to store
+ * the values.
+ * 
+ */
+public class MyDisjSets implements DisjointSets {
+
+	private int[] up; // the main array we use to hold the up-tree
+	
+	/**
+	 * Required constructor.
+	 * @param numElements is the total number of elements, each element is initially in its own set.
+	 */
+	public MyDisjSets(int numElements) {
+		up =  new int[numElements];
+		for (int i = 0; i < up.length; i++){
+			up[i] = -1;
+		}
+	}
+	
+	/**
+     * Union (combine) two disjoint sets into one set. 
+     * No restriction on which set should be added to the other set.
+     * @param set1 the name of set 1.
+     * @param set2 the name of set 2.
+     * @throws InvalidSetNameException if either of set1 or set2 are 
+     * not the name of sets.
+     * @throws InvalidElementException if either of set1 or set2
+     * is not a valid element. 
+     */
+	public void union(int set1, int set2) {
+		if (!isSetName(set1) || !isSetName(set2)){ // these method calls will check for InvalidElementException on their own
+			throw new InvalidSetNameException();
+		}
+		// if (set1 > up.length || set2 > up.length || s) // probably not necessary
+		if (up[set2] < up[set1]){
+			up[set2] += up[set1];
+			up[set1] = set2;
+		}else{
+			up[set1] += up[set2];
+			up[set2] = set1;
+		}
+		
+	}
+
+	/**
+     * Find which set element x belongs to.
+     * @param x the element being searched for.
+     * @return the name of the set containing x.
+     * @throws InvalidElementException if x is not a valid element. 
+     */
+	public int find (int x) {
+		if (x > up.length){
+			throw new InvalidElementException();
+		}
+		if (up[x] < 0)
+			return x;
+		else
+			return up[x] = find( up[x] );
+	}
+
+	/**
+     * Returns the current total number of sets.
+     * @return the current number of sets.
+     */
+	public int numSets() {
+		int sets = 0;
+		for (int i = 0; i < up.length; i++){
+			if (up[i] < 0){ // if an value at an index is negative, it is the root of a set up-tree
+				sets++;
+			}
+		}
+		return sets;
+	}
+
+	/**
+     * Determine if an element is the name of a set.
+     * @param x an element
+     * @return true if x is the name of a set
+     * @throws InvalidElementException if x is not a valid element. 
+     */
+	public boolean isSetName(int x) {
+		if (x > up.length){
+			throw new InvalidElementException();
+		}
+		return up[x] < 0;
+	}
+
+	/**
+     * Returns the total number of elements in the given set.
+     * @param setNum the name of a set
+     * @return the number of elements in set setNum
+     * @throws InvalidSetNameException if setNum is not the name of a set.
+     * @throws InvalidElementException if setNum is not a valid element. 
+     */
+	public int numElements(int setNum) {
+		if (!isSetName(setNum)){
+			throw new InvalidSetNameException();
+		}
+		return -1 * up[setNum];
+	}
+
+	/**
+     * Prints out the elements in the given set.
+     * setNum is assumed to be a root and represents the name of a set.
+     * @param setNum the name of a set
+     * @throws InvalidSetNameException if setNum is not the name of a set.
+     * @throws InvalidElementException if setNum is not a valid element. 
+     */
+	public void printSet(int setNum) {
+		if (!isSetName(setNum)){
+			throw new InvalidSetNameException();
+		}
+		int[] set = getElements(setNum);
+		System.out.print("{");
+		for (int i = 0; i < set.length - 1; i++){
+			System.out.print(set[i] + ", ");
+		}
+		System.out.print(set[set.length - 1] + "}"); // fencepost end case
+	}
+
+	/**
+     * Returns an array containing the elements in the given set.
+     * @param setNum the name of a set
+     * @returns an array containing the elements in the given set.
+     * @throws InvalidSetNameException if setNum is not the name of a set.
+     * @throws InvalidElementException if setNum is not a valid element. 
+     */
+	public int[] getElements(int setNum) {
+		if (!isSetName(setNum)){
+			throw new InvalidSetNameException();
+		}
+		int index = 0;
+		int[] set = new int[-1 * up[setNum]]; // use the weight, negated, to get array size
+		for (int i = 0; i < up.length; i++){  // iterate through the set and check every element to see if it's in the set
+			if (find(i) == setNum){
+				set[index] = i;
+				index++;
+			}
+		}
+		return set;
+	}
+
+}

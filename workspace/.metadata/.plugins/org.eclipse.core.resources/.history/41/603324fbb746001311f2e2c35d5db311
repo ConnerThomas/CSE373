@@ -1,0 +1,16 @@
+
+public class MazeBuilder {
+
+	public static void main(String[] args) {
+		
+		int numElements = 5;
+		
+		DisjointSets dj = new MyDisjSets(numElements);
+		dj.union(1, 2);
+		System.out.println(dj.find(3));
+		dj.union(4, 3);
+		dj.union(4, 1);
+		dj.union(4, 5);
+	}
+
+}

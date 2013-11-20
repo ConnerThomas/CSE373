@@ -1,0 +1,13 @@
+
+public class Homework_1 {
+
+	public static void main(String[] args) {
+		ArrayStack arr = new ArrayStack();
+		for (int i = 0; i < 30;) {
+			arr.push((double) i);
+			System.out.println(arr.peek());
+			i++;
+		}
+	}
+
+}

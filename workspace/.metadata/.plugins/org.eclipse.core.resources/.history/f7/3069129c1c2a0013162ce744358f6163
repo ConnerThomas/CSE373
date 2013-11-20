@@ -1,0 +1,35 @@
+import java.util.EmptyStackException;
+
+
+public class ListStack {
+	
+	ListStackNode front = new ListStackNode();
+	private int popCount = 0;
+	private int pushCount = 0;
+
+	public boolean isEmpty() {
+		return popCount == pushCount;
+	} 
+			
+	public void push (double d) {
+		ListStackNode newFront = new ListStackNode(d, front);
+		front = newFront;
+	}
+		
+	public double pop() {
+		double d = front.data;
+		front.next = front;
+		return d;
+	}
+		
+	/**
+     * peek
+     * @throws EmptyStackException if stack is empty
+     */
+	public double peek() {
+		if (popCount == pushCount)
+			throw new EmptyStackException();
+		else
+			return front.data;
+	}
+}

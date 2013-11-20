@@ -1,0 +1,25 @@
+/**
+ * Conner Thomas
+ * CSE 373
+ * 10-1-2013
+ * 
+ * Implementation of a stack for doubles using an array
+ */
+public class ArrayStack implements DStack {
+	
+	public boolean isEmpty() {
+		return false;
+	} 
+		
+	public void push (double d) {
+		
+	}
+	
+	public double pop() {
+		return 0;
+	}
+	
+	public double peek() {
+		return 0;
+	}
+}

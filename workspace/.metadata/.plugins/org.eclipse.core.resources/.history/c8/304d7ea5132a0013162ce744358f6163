@@ -1,0 +1,6 @@
+
+public class ListStackNode {
+
+	char data;
+	ListStackNode next;
+}
