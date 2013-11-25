@@ -54,7 +54,7 @@ public class MyDisjSets implements DisjointSets {
      * @throws InvalidElementException if x is not a valid element. 
      */
 	public int find (int x) {
-		if (x >= up.length || x < 0){
+		if (x > up.length){
 			throw new InvalidElementException();
 		}
 		if (up[x] < 0)
@@ -84,7 +84,7 @@ public class MyDisjSets implements DisjointSets {
      * @throws InvalidElementException if x is not a valid element. 
      */
 	public boolean isSetName(int x) {
-		if (x >= up.length || x < 0){
+		if (x > up.length){
 			throw new InvalidElementException();
 		}
 		return up[x] < 0;
