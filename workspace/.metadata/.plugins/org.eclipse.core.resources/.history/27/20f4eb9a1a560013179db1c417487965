@@ -19,17 +19,8 @@ public class MyGraph implements Graph {
      * @param e a collection of the edges in this graph
      */
     public MyGraph(Collection<Vertex> v, Collection<Edge> e) {
-    	//copy in
-    	//copy the vertices as well (deeeeep copy)
-    	myVertices = new ArrayList<Vertex>();
-    	for(Vertex tempV: v) {
-    		myVertices.add(new Vertex(tempV.getLabel(), tempV.known, tempV.distance, tempV.path));
-    	}
-    	myEdges = new ArrayList<Edge>();
-    	for(Edge tempE: e) {
-    		myEdges.add(new Edge(tempE.getSource(), tempE.getDestination(), tempE.getWeight()));
-    	}
-    	
+    	this.myVertices = v;
+    	this.myEdges = e;
     	adjacencyList = new HashMap<Vertex, ArrayList<Vertex>>();
     	
     	//add to adj list
@@ -51,11 +42,7 @@ public class MyGraph implements Graph {
      * @return the vertices as a collection (which is anything iterable)
      */
     public Collection<Vertex> vertices() {
-    	Collection<Vertex> vOut = new ArrayList<Vertex>();
-    	for(Vertex tempV: myVertices) {
-    		vOut.add(new Vertex(tempV.getLabel(), tempV.known, tempV.distance, tempV.path));
-    	}
-    	return vOut;
+    	return myVertices;
     }
 
     /** 
@@ -63,11 +50,7 @@ public class MyGraph implements Graph {
      * @return the edges as a collection (which is anything iterable)
      */
     public Collection<Edge> edges() {
-    	Collection<Edge> eOut = new ArrayList<Edge>();
-    	for(Edge tempE: myEdges) {
-    		eOut.add(new Edge(tempE.getSource(), tempE.getDestination(), tempE.getWeight()));
-    	}
-    	return eOut;
+    	return myEdges;
     }
 
     /**
@@ -125,7 +108,8 @@ public class MyGraph implements Graph {
     	if (a.equals(b)) {
     		List<Vertex> l = new ArrayList<Vertex>();
     		l.add(a);
-    		return new Path(l, 0);
+    		Path p = new Path(l, 0);
+    		return p;
     	}
     	
     	dijsktra(a);
@@ -185,7 +169,6 @@ public class MyGraph implements Graph {
     	return v;
     }
     
-    //returns the edge object from a to b if exists, otherwise returns null
     private Edge findEdge(Vertex a, Vertex b) {
     	for(Edge e: myEdges) {
     		if (e.getSource().equals(a) && e.getDestination().equals(b)) {

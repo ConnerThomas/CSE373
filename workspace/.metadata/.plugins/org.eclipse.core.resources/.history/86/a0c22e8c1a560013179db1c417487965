@@ -12,16 +12,12 @@ public class Vertex {
 	 * @param label the label attached to this vertex
 	 */
 	public Vertex(String label) {
-		this(label, false, Integer.MAX_VALUE, null);
-	}
-	
-	public Vertex(String label, boolean known, int distance, Vertex path) {
 		if(label == null)
 			throw new IllegalArgumentException("null");
 		this.label = label;
-		this.known = known;
-		this.distance = distance;
-		this.path = path;
+		known = false;
+		distance = Integer.MAX_VALUE;
+		path = null;
 	}
 
 	/**
