@@ -1,3 +1,13 @@
+/* Conner Thomas
+ * Nick Morello
+ * CSe 373
+ * Homework 5
+ * 
+ * This homework implements a graph and uses dijkstra's algorithm
+ * to find the shortest path from one starting vertex to any other vertex
+ * 
+ */
+
 import java.util.*;
 
 /**
@@ -20,6 +30,7 @@ public class MyGraph implements Graph {
      */
     public MyGraph(Collection<Vertex> v, Collection<Edge> e) {
     	//TODO: add duplicate edge/vertex checking
+    	
     	//copy in
     	myVertices = new ArrayList<Vertex>();
     	for(Vertex tempV: v) {
@@ -151,7 +162,7 @@ public class MyGraph implements Graph {
     	Vertex temp = b;
     	
     	while(!temp.equals(a)) {
-    		if (temp.path == null) return null; //path is borked
+    		if (temp.path == null) return null; //if path is borked
     		vertList.add(temp);
     		temp = temp.path;
     	}
@@ -161,7 +172,7 @@ public class MyGraph implements Graph {
     }
     
     /**
-     * Implementation of Djikstra's algorithm to find shortest paths
+     * Implementation of Dijkstra's algorithm to find shortest paths
      * @param start the starting vertex to path from
      */
     private void dijsktra(Vertex start) {
