@@ -3,6 +3,9 @@
  */
 public class Vertex {
 	private final String label;   // label attached to this vertex
+	public boolean known;
+	public int distance;
+	public Vertex path;
 
 	/**
 	 * Construct a new vertex
@@ -12,6 +15,9 @@ public class Vertex {
 		if(label == null)
 			throw new IllegalArgumentException("null");
 		this.label = label;
+		known = false;
+		distance = Integer.MAX_VALUE;
+		path = null;
 	}
 
 	/**
