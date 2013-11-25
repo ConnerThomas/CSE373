@@ -139,19 +139,17 @@ public class MyGraph implements Graph {
 		}
     	
     	if (a.equals(b)) {
-			List<Vertex> l = new ArrayList<Vertex>();
-			l.add(a);
-			return new Path(l, 0);
-		}
-   	
-    	//run dijkstra's stuff
-    	dijsktra(a); 
+    		List<Vertex> l = new ArrayList<Vertex>();
+    		l.add(a);
+    		return new Path(l, 0);
+    	}
+    	
+    	dijsktra(a);
     	
     	List<Vertex> vertList = new ArrayList<Vertex>();
     	Vertex temp = b;
     	
     	while(!temp.equals(a)) {
-    		if (temp.path == null) return null; //path is borked
     		vertList.add(temp);
     		temp = temp.path;
     	}
@@ -161,7 +159,7 @@ public class MyGraph implements Graph {
     }
     
     /**
-     * Implementation of Djikstra's algorithm to find shortest paths
+     * 
      * @param start the starting vertex to path from
      */
     private void dijsktra(Vertex start) {

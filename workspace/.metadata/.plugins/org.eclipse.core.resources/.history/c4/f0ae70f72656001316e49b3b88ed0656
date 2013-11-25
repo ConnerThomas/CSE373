@@ -139,19 +139,17 @@ public class MyGraph implements Graph {
 		}
     	
     	if (a.equals(b)) {
-			List<Vertex> l = new ArrayList<Vertex>();
-			l.add(a);
-			return new Path(l, 0);
-		}
-   	
-    	//run dijkstra's stuff
-    	dijsktra(a); 
+    		List<Vertex> l = new ArrayList<Vertex>();
+    		l.add(a);
+    		return new Path(l, 0);
+    	}
+    	
+    	dijsktra(a);
     	
     	List<Vertex> vertList = new ArrayList<Vertex>();
     	Vertex temp = b;
     	
     	while(!temp.equals(a)) {
-    		if (temp.path == null) return null; //path is borked
     		vertList.add(temp);
     		temp = temp.path;
     	}
@@ -160,10 +158,6 @@ public class MyGraph implements Graph {
     	return new Path(vertList, b.distance);
     }
     
-    /**
-     * Implementation of Djikstra's algorithm to find shortest paths
-     * @param start the starting vertex to path from
-     */
     private void dijsktra(Vertex start) {
     	Collection<Vertex> vertList = new ArrayList<Vertex>();
     	
@@ -181,8 +175,6 @@ public class MyGraph implements Graph {
     	
     	while(!vertList.isEmpty()) {
     		Vertex v = smallestDist(vertList);
-    		
-    		if (v == null) break; //eww
     		
     		vertList.remove(v);
     		v.known = true;
@@ -202,12 +194,6 @@ public class MyGraph implements Graph {
     	
     }
     
-    /**
-     *  returns 
-     * 
-     * @param vertList a list of vertices
-     * @return the vertex from vertList that is the shortest distance away
-     */
     private Vertex smallestDist(Collection<Vertex> vertList) {
     	int min = Integer.MAX_VALUE;
 		Vertex v = null;
@@ -220,14 +206,7 @@ public class MyGraph implements Graph {
     	return v;
     }
     
-
-    /**
-     * 	Returns the edge object directed from a to b
-     * 
-     * @param a the first vertex
-     * @param b the second vertex
-     * @return the edge object from a to b if exists, otherwise returns null
-     */
+    //returns the edge object from a to b if exists, otherwise returns null
     private Edge findEdge(Vertex a, Vertex b) {
     	for(Edge e: myEdges) {
     		if (e.getSource().equals(a) && e.getDestination().equals(b)) {

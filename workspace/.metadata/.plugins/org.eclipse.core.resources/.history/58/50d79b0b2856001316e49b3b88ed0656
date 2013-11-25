@@ -138,14 +138,13 @@ public class MyGraph implements Graph {
 			}
 		}
     	
-    	if (a.equals(b)) {
-			List<Vertex> l = new ArrayList<Vertex>();
-			l.add(a);
-			return new Path(l, 0);
-		}
-   	
-    	//run dijkstra's stuff
-    	dijsktra(a); 
+//    	if (a.equals(b)) {
+//    		List<Vertex> l = new ArrayList<Vertex>();
+//    		l.add(a);
+//    		return new Path(l, 0);
+//    	}
+    	
+    	dijsktra(a);
     	
     	List<Vertex> vertList = new ArrayList<Vertex>();
     	Vertex temp = b;

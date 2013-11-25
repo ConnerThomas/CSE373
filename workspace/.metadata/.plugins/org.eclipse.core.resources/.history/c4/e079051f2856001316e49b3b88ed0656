@@ -144,8 +144,7 @@ public class MyGraph implements Graph {
 			return new Path(l, 0);
 		}
    	
-    	//run dijkstra's stuff
-    	dijsktra(a); 
+    	dijsktra(a);
     	
     	List<Vertex> vertList = new ArrayList<Vertex>();
     	Vertex temp = b;

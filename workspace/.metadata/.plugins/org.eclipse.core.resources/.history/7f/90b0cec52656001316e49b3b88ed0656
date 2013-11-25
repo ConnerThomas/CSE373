@@ -35,22 +35,8 @@ public class FindPaths {
 				System.exit(1);
 			}
 			
-			System.out.println("Shortest path from " + a.getLabel() + " to " + b.getLabel());
-			Path p = g.shortestPath(a, b);
-			if (p == null) {
-				System.out.println("does not exist");
-			} else {
-				Stack<Vertex> vertStack = new Stack<Vertex>();
-				for (int i = 0; i < p.vertices.size(); i++) {
-					vertStack.push(p.vertices.get(i));
-				}
-				System.out.print(vertStack.pop().getLabel());
-				while (!vertStack.isEmpty()) {
-					System.out.print(" to " + vertStack.pop().getLabel());
-				}
-				System.out.println();
-				System.out.println(p.cost);
-			}
+			
+			System.out.println(g.shortestPath(a, b).toString());
 		}
 	}
 
