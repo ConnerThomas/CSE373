@@ -29,7 +29,23 @@ public class MyGraph implements Graph {
      * @param e a collection of the edges in this graph
      */
     public MyGraph(Collection<Vertex> v, Collection<Edge> e) {
-    	//TODO: add duplicate edge/vertex checking
+    	// edge/vertex checking
+    	for (Edge edg : e) {
+    		// if the weight is negative
+			if (edg.getWeight() < 0) throw new InvalidEdgeException();
+			for (Edge compareEdge : e) {
+				// if the edge has same source and dest but different weight
+				if (edg.getSource().equals(compareEdge.getSource()) &&
+					edg.getDestination().equals(compareEdge.getDestination()) &&
+					edg.getWeight() != compareEdge.getWeight()) {
+					throw new InvalidEdgeException();
+				}
+			}
+			// if the edge has a vertex that doesn't exist in the collection of vertices
+			if (!v.contains(edg.getSource()) || !v.contains(edg.getDestination())) {
+				throw new InvalidEdgeException();
+			}
+    	}
     	
     	//copy in
     	myVertices = new ArrayList<Vertex>();
@@ -65,7 +81,20 @@ public class MyGraph implements Graph {
     	
 
     }
-
+    
+    /*
+     * This exception signifies that an edge is invalid.
+     * Invalid edges are those that refer to vertices that don't exist
+     * or edges with negative weights in this case.
+     */
+    public class InvalidEdgeException extends RuntimeException {
+		public InvalidEdgeException() {
+    	}
+    	public InvalidEdgeException(String message) {
+    		super(message);
+    	}
+    }
+    
     /** 
      * Return the collection of vertices of this graph
      * @return the vertices as a collection (which is anything iterable)
