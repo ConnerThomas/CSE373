@@ -1,0 +1,2 @@
+commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<messages>\r\n<message>Added error checking to MyGraph and added InvalidEdgeException Class</message>\r\n<message>Added comments to all classes, still need to add in dupe checking</message>\r\n</messages>
+eclipse.preferences.version=1
